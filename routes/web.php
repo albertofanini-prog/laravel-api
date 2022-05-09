@@ -53,6 +53,7 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
 //     return view('guest.home');
 // })->where('any','.*');
 
+//function diretta per fallback
 Route::fallback(function(){
     return view('guest.home');
 });
