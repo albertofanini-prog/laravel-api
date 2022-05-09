@@ -5,16 +5,19 @@
                 Ultimi post
             </h1>
         </div>
-        <div class="container">
-            <div v-for="post in posts" :key="post.id">
-                {{ post.title }}
-            </div>
+        <div class="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <PostCard v-for="post in posts" :key="post.id" :post="post"/>
         </div>
     </div>
 </template>
 
 <script>
+import PostCard from '../components/PostCard.vue' //uscire da views/andare in components/prendere componente
+
 export default {
+    components:{
+        PostCard
+    },
     data(){
         return{
             posts: []
@@ -23,11 +26,12 @@ export default {
     methods: {
         fetchPosts(){
             //axios.get
+            //chiamata axios
             //recuperare i post
             axios.get('/api/posts')
             .then(res=>{
                 // console.log(res.data.posts)
-                //recuperare array di posts
+                //recuperare proprietà (array) posts in res.data
                 const {posts} = res.data
                 //salvare i posts
                 this.posts = posts
