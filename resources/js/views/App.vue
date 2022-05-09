@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app bg-yellow-600">
         <header>
             <nav>
                 <ul>
@@ -27,5 +27,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.app{
+    min-height: 100vh;
+}
 </style>

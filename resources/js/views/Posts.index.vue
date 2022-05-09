@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="container">
         <div class="container">
             <h1>
                 Ultimi post
             </h1>
         </div>
-        <div class="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             <PostCard v-for="post in posts" :key="post.id" :post="post"/>
         </div>
     </div>
