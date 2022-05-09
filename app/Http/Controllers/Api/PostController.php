@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //recuperare tutti i post
+        // $posts = Post::all();
+        $posts = Post::with(['category', 'tags'])->limit(16)->get();
+
+        //ritornare in formato json
+        return response()->json([
+            'posts' => $posts,
+            'succes'=> true
+        ]);
     }
 
     /**

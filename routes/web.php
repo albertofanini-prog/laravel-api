@@ -41,3 +41,11 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
 });
 
 // Route::get('home', 'HomeController@index')->name('home');
+
+//creare rotta
+    //tutto ciò che è intercettato viene passato alla rotta
+    //e ritornato
+    //where tutto il path dell'url
+Route::get('{any?}', function($param){
+    return $param;
+})->where('any','.*');
