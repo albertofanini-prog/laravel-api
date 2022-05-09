@@ -46,9 +46,13 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     //tutto ciò che è intercettato viene passato alla rotta
     //e ritornato
     //where tutto il path dell'url
-Route::get('{any?}', function(){
-    // return $param;
+// Route::get('{any?}', function(){
+//     // return $param;
 
-    //ritornare la vista
+//     //ritornare la vista
+//     return view('guest.home');
+// })->where('any','.*');
+
+Route::fallback(function(){
     return view('guest.home');
-})->where('any','.*');
+});
