@@ -1925,8 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     post: {
@@ -1947,7 +1945,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostCard.vue */ "./resources/js/components/PostCard.vue");
+/* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
+//
 //
 //
 //
@@ -1965,7 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PostCard: _PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    PostCard: _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -1984,7 +1983,7 @@ __webpack_require__.r(__webpack_exports__);
         //recuperare proprietà (array) posts in res.data
         var posts = res.data.posts; //salvare i posts
 
-        _this.posts = posts;
+        _this.posts = posts.data;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -2007,6 +2006,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Posts_index_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Posts.index.vue */ "./resources/js/components/Posts.index.vue");
+//
+//
 //
 //
 //
@@ -3164,46 +3165,46 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card post rounded-lg border border-black overflow-hidden" },
+    { staticClass: "max-w-sm rounded overflow-hidden shadow-lg" },
     [
       _c("img", {
-        staticClass: "w-full object-cover",
-        attrs: { src: "https://picsum.photos/450/250" },
+        staticClass: "w-full",
+        attrs: {
+          src: "https://picsum.photos/450/250",
+          alt: "Sunset in the mountains",
+        },
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "card_body p-6" }, [
-        _c("h4", { staticClass: "post_title mb-4 text-xl" }, [
+      _c("div", { staticClass: "px-6 py-4" }, [
+        _c("div", { staticClass: "font-bold text-xl mb-2" }, [
           _vm._v("\n            " + _vm._s(_vm.post.title) + "\n        "),
         ]),
         _vm._v(" "),
         _vm.post.category
-          ? _c("p", { staticClass: "text-sky-800 text-sm mb-2" }, [
+          ? _c("p", { staticClass: "text-gray-700 text-base" }, [
               _vm._v(
-                "\n            " + _vm._s(_vm.post.category.name) + "\n        "
+                "\n        " + _vm._s(_vm.post.category.name) + "\n        "
               ),
             ])
           : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "ul",
-          { staticClass: "tags flex flex-wrap gap-4 items-center" },
-          _vm._l(_vm.post.tags, function (tag) {
-            return _c(
-              "li",
-              {
-                key: tag.id,
-                staticClass: "tag bg-white/30 rounded-full text-sm p-1 block",
-              },
-              [
-                _vm._v(
-                  "\n                " + _vm._s(tag.name) + "\n            "
-                ),
-              ]
-            )
-          }),
-          0
-        ),
       ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "px-6 pt-4 pb-2" },
+        _vm._l(_vm.post.tags, function (tag) {
+          return _c(
+            "span",
+            {
+              key: tag.id,
+              staticClass:
+                "inline-block bg-purple-200 text-purple-900 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2",
+            },
+            [_vm._v(_vm._s(tag.name))]
+          )
+        }),
+        0
+      ),
     ]
   )
 }
@@ -3251,7 +3252,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("\n            Ultimi post\n        ")]),
+      _c("h1", { staticClass: "text-4xl py-5" }, [
+        _vm._v("\n            Ultimi post\n        "),
+      ]),
     ])
   },
 ]
@@ -3278,14 +3281,8 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "app bg-yellow-600" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("PostsGrid"),
-      _vm._v(" "),
-      _c("footer", [_vm._v("\n        © Boolpress 2022\n    ")]),
-    ],
+    { staticClass: "app bg-green-100" },
+    [_vm._m(0), _vm._v(" "), _c("PostsGrid"), _vm._v(" "), _vm._m(1)],
     1
   )
 }
@@ -3295,7 +3292,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", [
-      _c("nav", [
+      _c("nav", { staticClass: "container" }, [
         _c("ul", [
           _c("li", [_vm._v("Home")]),
           _vm._v(" "),
@@ -3303,6 +3300,16 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("li", [_vm._v("Categories")]),
         ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", [
+      _c("div", { staticClass: "container py-5" }, [
+        _vm._v("\n            © Boolpress 2022\n        "),
       ]),
     ])
   },

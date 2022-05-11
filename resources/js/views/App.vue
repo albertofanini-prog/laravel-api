@@ -1,7 +1,7 @@
 <template>
-    <div class="app bg-yellow-600">
+    <div class="app bg-green-100">
         <header>
-            <nav>
+            <nav class="container">
                 <ul>
                     <li>Home</li>
                     <li>Posts</li>
@@ -11,7 +11,9 @@
         </header>
         <PostsGrid/>
         <footer>
-            &copy; Boolpress 2022
+            <div class="container py-5">
+                &copy; Boolpress 2022
+            </div>
         </footer>
     </div>
 </template>
