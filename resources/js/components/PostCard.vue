@@ -5,7 +5,7 @@
             <h4 class="post_title mb-4 text-xl">
                 {{post.title}}
             </h4>
-            <p class="text-sky-800 mb-2" v-if="post.category">
+            <p class="text-sky-800 text-sm mb-2" v-if="post.category">
                 {{post.category.name}}
             </p>
             <ul class="tags flex flex-wrap gap-4 items-center">
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-    props:{
+    props: {
         post: {
             type: Object,
             required: false

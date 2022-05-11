@@ -17,10 +17,10 @@
 </template>
 
 <script>
-    import PostsGrid from './Posts.index.vue'
+    import PostsGrid from '../components/Posts.index.vue'
 
     export default{
-        components:{
+        components: {
             PostsGrid,
         }
     }

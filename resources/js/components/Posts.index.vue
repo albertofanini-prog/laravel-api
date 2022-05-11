@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <div class="container">
             <h1>
                 Ultimi post
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import PostCard from '../components/PostCard.vue' //uscire da views/andare in components/prendere componente
+import PostCard from './PostCard.vue' //uscire da views/andare in components/prendere componente
 
 export default {
     components:{

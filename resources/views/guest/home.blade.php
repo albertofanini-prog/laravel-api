@@ -26,7 +26,7 @@
                 extend: {
                     container:{
                         center:true
-                    }  
+                    },
                     colors: {
                         clifford: '#da373d',
                     }

@@ -15,9 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
+        
         //recuperare tutti i post
         // $posts = Post::all();
-        $posts = Post::with(['category', 'tags'])->limit(16)->get();
+        // $posts = Post::with(['category', 'tags'])->limit(16)->get();
+        $posts = Post::with(['category', 'tags'])->where('published_at','!=',null)->orderBy('published_at','desc')->paginate(12);
 
         //ritornare in formato json
         return response()->json([
