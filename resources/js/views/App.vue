@@ -2,10 +2,10 @@
     <div class="app bg-green-100">
         <header>
             <nav class="container">
-                <ul>
-                    <li>Home</li>
-                    <li>Posts</li>
-                    <li>Categories</li>
+                <ul class="pagination flex justify-center gap-4 items-center">
+                    <li class="flex items-center justify-center text-md bg-blue-300 rounded-full my-6 p-1">Home</li>
+                    <li class="flex items-center justify-center text-md bg-blue-300 rounded-full my-6 p-1">Posts</li>
+                    <li class="flex items-center justify-center text-md bg-blue-300 rounded-full my-6 p-1">Categories</li>
                 </ul>
             </nav>
         </header>

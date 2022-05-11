@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg border-black">
         <img class="w-full" src="https://picsum.photos/450/250" alt="Sunset in the mountains">
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">

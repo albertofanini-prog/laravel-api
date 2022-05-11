@@ -1960,6 +1960,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  //uscire da views/andare in components/prendere componente
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1968,22 +1980,43 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      //assegnare ultima pagina di default
+      lastPage: 0,
+      //assegnare prima pagina di default
+      currentPage: 1
     };
   },
   methods: {
+    //passare parametro prima pagina di default
     fetchPosts: function fetchPosts() {
       var _this = this;
 
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       //axios.get
       //chiamata axios
       //recuperare i post
-      axios.get('/api/posts').then(function (res) {
+      //passare il parametro page per buttons currentPage, nextPage
+      axios.get('/api/posts', {
+        params: {
+          page: page
+        }
+      }).then(function (res) {
         // console.log(res.data.posts)
         //recuperare proprietà (array) posts in res.data
-        var posts = res.data.posts; //salvare i posts
+        var posts = res.data.posts; //salvare i dati, la prima pagina e l'ultima
 
-        _this.posts = posts.data;
+        var data = posts.data,
+            last_page = posts.last_page,
+            current_page = posts.current_page; //salvare i posts
+        // this.posts = posts.data o
+        //assegnare a this.post i data
+
+        _this.posts = data; //assegnare lastPage
+
+        _this.lastPage = last_page; //assegnare currentPage
+
+        _this.currentPage = current_page;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -3165,7 +3198,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "max-w-sm rounded overflow-hidden shadow-lg" },
+    { staticClass: "max-w-sm rounded overflow-hidden shadow-lg border-black" },
     [
       _c("img", {
         staticClass: "w-full",
@@ -3244,6 +3277,32 @@ var render = function () {
       }),
       1
     ),
+    _vm._v(" "),
+    _c("div", { staticClass: "container py-6" }, [
+      _c(
+        "ul",
+        { staticClass: "pagination flex justify-center gap-4 items-center" },
+        _vm._l(_vm.lastPage, function (n) {
+          return _c(
+            "li",
+            {
+              key: n,
+              class: [
+                _vm.currentPage === n ? "bg-orange-400" : "bg-black/30",
+                "dot cursor-pointer rounded-full h-10 w-10 flex items-center justify-center text-sm text-white",
+              ],
+              on: {
+                click: function ($event) {
+                  return _vm.fetchPosts(n)
+                },
+              },
+            },
+            [_vm._v("\n                " + _vm._s(n) + "\n            ")]
+          )
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -3293,13 +3352,38 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("header", [
       _c("nav", { staticClass: "container" }, [
-        _c("ul", [
-          _c("li", [_vm._v("Home")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Posts")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("Categories")]),
-        ]),
+        _c(
+          "ul",
+          { staticClass: "pagination flex justify-center gap-4 items-center" },
+          [
+            _c(
+              "li",
+              {
+                staticClass:
+                  "flex items-center justify-center text-md bg-blue-300 rounded-full my-6 p-1",
+              },
+              [_vm._v("Home")]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass:
+                  "flex items-center justify-center text-md bg-blue-300 rounded-full my-6 p-1",
+              },
+              [_vm._v("Posts")]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass:
+                  "flex items-center justify-center text-md bg-blue-300 rounded-full my-6 p-1",
+              },
+              [_vm._v("Categories")]
+            ),
+          ]
+        ),
       ]),
     ])
   },
